@@ -11,25 +11,41 @@ import SwiftUI
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-    var window: NSWindow!
-
+    var popover: NSPopover!
+    var statusBarItem: NSStatusItem!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
-        let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
         
-        if let button = statusItem.button {
-          button.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
-          button.action = #selector(printQuote(_:))
+        print("Init")
+        
+        let popover = NSPopover()
+        popover.contentSize = NSSize(width: 240, height: 120)
+        popover.behavior = .transient
+        popover.contentViewController = NSHostingController(rootView: contentView)
+        self.popover = popover
+        
+        self.statusBarItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
+
+        if let button = self.statusBarItem.button {
+             button.image = NSImage(named: "Record")
+             button.action = #selector(togglePopover(_:))
         }
+    }
+    
+    @objc func togglePopover(_ sender: AnyObject?) {
+         if let button = self.statusBarItem.button {
+              if self.popover.isShown {
+                   self.popover.performClose(sender)
+              } else {
+                   self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+                   self.popover.contentViewController?.view.window?.becomeKey()
+              }
+         }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
-
 }
 
