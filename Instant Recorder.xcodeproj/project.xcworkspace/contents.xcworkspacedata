@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Sound Mirror.xcodeproj">
+      location = "self:/Users/pyzhianov/My/xcode/Instant Recorder/Instant Recorder.xcodeproj">
    </FileRef>
 </Workspace>

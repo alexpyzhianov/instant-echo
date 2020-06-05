@@ -15,14 +15,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4D9A111C2483D4CC00341833 /* Sound Mirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sound Mirror.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D9A111C2483D4CC00341833 /* Instant Recorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instant Recorder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D9A111F2483D4CC00341833 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D9A11212483D4CC00341833 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4D9A11232483D4CD00341833 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D9A11262483D4CD00341833 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4D9A11292483D4CD00341833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D9A112B2483D4CD00341833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D9A112C2483D4CD00341833 /* Sound_Mirror.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sound_Mirror.entitlements; sourceTree = "<group>"; };
+		4D9A112C2483D4CD00341833 /* Instant_Recorder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Instant_Recorder.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,7 +39,7 @@
 		4D9A11132483D4CC00341833 = {
 			isa = PBXGroup;
 			children = (
-				4D9A111E2483D4CC00341833 /* Sound Mirror */,
+				4D9A111E2483D4CC00341833 /* Instant Recorder */,
 				4D9A111D2483D4CC00341833 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,12 +47,12 @@
 		4D9A111D2483D4CC00341833 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4D9A111C2483D4CC00341833 /* Sound Mirror.app */,
+				4D9A111C2483D4CC00341833 /* Instant Recorder.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4D9A111E2483D4CC00341833 /* Sound Mirror */ = {
+		4D9A111E2483D4CC00341833 /* Instant Recorder */ = {
 			isa = PBXGroup;
 			children = (
 				4D9A111F2483D4CC00341833 /* AppDelegate.swift */,
@@ -60,10 +60,10 @@
 				4D9A11232483D4CD00341833 /* Assets.xcassets */,
 				4D9A11282483D4CD00341833 /* Main.storyboard */,
 				4D9A112B2483D4CD00341833 /* Info.plist */,
-				4D9A112C2483D4CD00341833 /* Sound_Mirror.entitlements */,
+				4D9A112C2483D4CD00341833 /* Instant_Recorder.entitlements */,
 				4D9A11252483D4CD00341833 /* Preview Content */,
 			);
-			path = "Sound Mirror";
+			path = "Instant Recorder";
 			sourceTree = "<group>";
 		};
 		4D9A11252483D4CD00341833 /* Preview Content */ = {
@@ -77,9 +77,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4D9A111B2483D4CC00341833 /* Sound Mirror */ = {
+		4D9A111B2483D4CC00341833 /* Instant Recorder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4D9A112F2483D4CD00341833 /* Build configuration list for PBXNativeTarget "Sound Mirror" */;
+			buildConfigurationList = 4D9A112F2483D4CD00341833 /* Build configuration list for PBXNativeTarget "Instant Recorder" */;
 			buildPhases = (
 				4D9A11182483D4CC00341833 /* Sources */,
 				4D9A11192483D4CC00341833 /* Frameworks */,
@@ -89,9 +89,9 @@
 			);
 			dependencies = (
 			);
-			name = "Sound Mirror";
-			productName = "Sound Mirror";
-			productReference = 4D9A111C2483D4CC00341833 /* Sound Mirror.app */;
+			name = "Instant Recorder";
+			productName = "Instant Recorder";
+			productReference = 4D9A111C2483D4CC00341833 /* Instant Recorder.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -109,7 +109,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4D9A11172483D4CC00341833 /* Build configuration list for PBXProject "Sound Mirror" */;
+			buildConfigurationList = 4D9A11172483D4CC00341833 /* Build configuration list for PBXProject "Instant Recorder" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -122,7 +122,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4D9A111B2483D4CC00341833 /* Sound Mirror */,
+				4D9A111B2483D4CC00341833 /* Instant Recorder */,
 			);
 		};
 /* End PBXProject section */
@@ -281,18 +281,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Sound Mirror/Sound_Mirror.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Instant Recorder/Instant_Recorder.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Sound Mirror/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Instant Recorder/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Sound Mirror/Info.plist";
+				INFOPLIST_FILE = "Instant Recorder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.alexpyzhianov.Sound-Mirror";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alexpyzhianov.Instant-Recorder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -302,18 +302,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Sound Mirror/Sound_Mirror.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Instant Recorder/Instant_Recorder.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Sound Mirror/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Instant Recorder/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "Sound Mirror/Info.plist";
+				INFOPLIST_FILE = "Instant Recorder/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.alexpyzhianov.Sound-Mirror";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alexpyzhianov.Instant-Recorder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -322,7 +322,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4D9A11172483D4CC00341833 /* Build configuration list for PBXProject "Sound Mirror" */ = {
+		4D9A11172483D4CC00341833 /* Build configuration list for PBXProject "Instant Recorder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D9A112D2483D4CD00341833 /* Debug */,
@@ -331,7 +331,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4D9A112F2483D4CD00341833 /* Build configuration list for PBXNativeTarget "Sound Mirror" */ = {
+		4D9A112F2483D4CD00341833 /* Build configuration list for PBXNativeTarget "Instant Recorder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D9A11302483D4CD00341833 /* Debug */,

@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Sound Mirror
+//  Instant Recorder
 //
 //  Created by Alexey Pyzhianov on 31.05.2020.
 //  Copyright © 2020 Alex Pyzhianov. All rights reserved.
