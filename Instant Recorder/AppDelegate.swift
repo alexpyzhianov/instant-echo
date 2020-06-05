@@ -15,13 +15,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBarItem: NSStatusItem!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let contentView = ContentView()
+        let contentView = ContentView().padding(24)
         
         print("Init")
         
         let popover = NSPopover()
-        popover.contentSize = NSSize(width: 240, height: 120)
-        popover.behavior = .transient
+        popover.contentSize = NSSize(width: 400, height: 120)
+        popover.behavior = .semitransient
         popover.contentViewController = NSHostingController(rootView: contentView)
         self.popover = popover
         
