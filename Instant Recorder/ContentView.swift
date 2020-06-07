@@ -10,11 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var progress = 0.0
-    @State private var isRecording = false
-    
-    func onStop() {
-        isRecording = false
-    }
+    @ObservedObject private var recorder = SoundRecorder.shared
         
     var body: some View {
         VStack {
@@ -22,19 +18,19 @@ struct ContentView: View {
             
             HStack {
                 Button(action: {
-                    print("play")
+                    self.recorder.play()
                 }) {
                     Text("Play")
                 }
                 
                 Button(action: {
-                    print("pause")
+                    self.recorder.pause()
                 }) {
                     Text("Pause")
                 }
                 
                 Button(action: {
-                    print("delete")
+                    self.recorder.clear()
                 }) {
                     Text("Delete")
                 }

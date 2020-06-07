@@ -6,17 +6,22 @@
 //  Copyright © 2020 Alex Pyzhianov. All rights reserved.
 //
 
-import Cocoa
 import AVFoundation
 
-func createOutputURL() -> URL {
+private func createOutputURL() -> URL {
     let path = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0]
     return URL(fileURLWithPath: "InstantRecorderLatest.m4a", relativeTo: path)
 }
 
-class SoundRecorder: NSObject {
-    var recorder: AVAudioRecorder?
-    var outputUrl = createOutputURL()
+class SoundRecorder: ObservableObject {
+    static let shared = SoundRecorder()
+    
+    @Published var outputUrl = createOutputURL()
+    @Published var isRecording = false
+    
+    private var recorder: AVAudioRecorder?
+    private var player: AVAudioPlayer?
+    private init() {}
     
     func start() {
         switch AVCaptureDevice.authorizationStatus(for: .audio) {
@@ -40,6 +45,7 @@ class SoundRecorder: NSObject {
     
     func stop() {
         recorder?.stop()
+        isRecording = false
     }
     
     func clear() {
@@ -48,6 +54,19 @@ class SoundRecorder: NSObject {
         } catch {
             print(error)
         }
+    }
+    
+    func play() {
+        do {
+            player = try AVAudioPlayer(contentsOf: outputUrl)
+            player?.play()
+        } catch {
+            print(error)
+        }
+    }
+    
+    func pause() {
+        player?.pause()
     }
     
     private func record() {
@@ -62,6 +81,7 @@ class SoundRecorder: NSObject {
         do {
             self.recorder = try AVAudioRecorder(url: outputUrl, format: format)
             recorder?.record()
+            isRecording = true
         } catch {
             print(error)
         }

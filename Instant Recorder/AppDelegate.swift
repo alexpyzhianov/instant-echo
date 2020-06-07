@@ -13,7 +13,6 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
     var popover: NSPopover?
     var statusBarItem: NSStatusItem?
-    var soundRecorder = SoundRecorder()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let contentView = ContentView().padding()
@@ -35,15 +34,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func onButtonClick(_ sender: AnyObject?) {
         if let button = self.statusBarItem?.button {
             if (popover?.isShown ?? false) {
-                soundRecorder.clear()
+                SoundRecorder.shared.clear()
                 popover?.performClose(sender)
-            } else if (soundRecorder.recorder?.isRecording ?? false) {
-                soundRecorder.stop()
+            } else if (SoundRecorder.shared.isRecording) {
+                SoundRecorder.shared.stop()
                 button.image = NSImage(named: "Record")
                 popover?.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
                 popover?.contentViewController?.view.window?.becomeKey()
             } else {
-                soundRecorder.start()
+                SoundRecorder.shared.start()
                 button.image = NSImage(named: "Stop")
             }
         }
