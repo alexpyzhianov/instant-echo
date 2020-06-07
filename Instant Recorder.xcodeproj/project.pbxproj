@@ -12,6 +12,7 @@
 		4D9A11242483D4CD00341833 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A11232483D4CD00341833 /* Assets.xcassets */; };
 		4D9A11272483D4CD00341833 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A11262483D4CD00341833 /* Preview Assets.xcassets */; };
 		4D9A112A2483D4CD00341833 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A11282483D4CD00341833 /* Main.storyboard */; };
+		4D9C70A3248C1342009406C5 /* SoundRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9C70A2248C1342009406C5 /* SoundRecorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		4D9A11292483D4CD00341833 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D9A112B2483D4CD00341833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D9A112C2483D4CD00341833 /* Instant_Recorder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Instant_Recorder.entitlements; sourceTree = "<group>"; };
+		4D9C70A2248C1342009406C5 /* SoundRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundRecorder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				4D9A111F2483D4CC00341833 /* AppDelegate.swift */,
 				4D9A11212483D4CC00341833 /* ContentView.swift */,
+				4D9C70A2248C1342009406C5 /* SoundRecorder.swift */,
 				4D9A11232483D4CD00341833 /* Assets.xcassets */,
 				4D9A11282483D4CD00341833 /* Main.storyboard */,
 				4D9A112B2483D4CD00341833 /* Info.plist */,
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D9C70A3248C1342009406C5 /* SoundRecorder.swift in Sources */,
 				4D9A11222483D4CC00341833 /* ContentView.swift in Sources */,
 				4D9A11202483D4CC00341833 /* AppDelegate.swift in Sources */,
 			);
