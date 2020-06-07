@@ -13,10 +13,11 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
     var popover: NSPopover?
     var statusBarItem: NSStatusItem?
-
+    var soundRecorder = SoundRecorder()
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let contentView = ContentView().padding()
-                
+        
         let popover = NSPopover()
         popover.contentSize = NSSize(width: 400, height: 120)
         popover.behavior = .transient
@@ -24,24 +25,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.popover = popover
         
         self.statusBarItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
-
+        
         if let button = self.statusBarItem?.button {
-             button.image = NSImage(named: "Record")
-             button.action = #selector(togglePopover(_:))
+            button.image = NSImage(named: "Record")
+            button.action = #selector(onButtonClick(_:))
         }
     }
     
-    @objc func togglePopover(_ sender: AnyObject?) {
-         if let button = self.statusBarItem?.button {
-              if (self.popover?.isShown ?? false) {
-                   self.popover?.performClose(sender)
-              } else {
-                   self.popover?.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
-                   self.popover?.contentViewController?.view.window?.becomeKey()
-              }
-         }
+    @objc func onButtonClick(_ sender: AnyObject?) {
+        if let button = self.statusBarItem?.button {
+            if (popover?.isShown ?? false) {
+                soundRecorder.clear()
+                popover?.performClose(sender)
+            } else if (soundRecorder.recorder?.isRecording ?? false) {
+                soundRecorder.stop()
+                button.image = NSImage(named: "Record")
+                popover?.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+                popover?.contentViewController?.view.window?.becomeKey()
+            } else {
+                soundRecorder.start()
+                button.image = NSImage(named: "Stop")
+            }
+        }
     }
-
+    
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }

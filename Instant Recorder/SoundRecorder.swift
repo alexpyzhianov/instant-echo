@@ -9,11 +9,16 @@
 import Cocoa
 import AVFoundation
 
+func createOutputURL() -> URL {
+    let path = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0]
+    return URL(fileURLWithPath: "InstantRecorderLatest.m4a", relativeTo: path)
+}
+
 class SoundRecorder: NSObject {
-    private var outputUrl: URL?
-    private var recorder: AVAudioRecorder?
+    var recorder: AVAudioRecorder?
+    var outputUrl = createOutputURL()
     
-    open func start() {
+    func start() {
         switch AVCaptureDevice.authorizationStatus(for: .audio) {
         case .authorized:
             record();
@@ -24,7 +29,7 @@ class SoundRecorder: NSObject {
                     self.record()
                 }
             }
-        
+            
         case .restricted:
             print("Oops")
             
@@ -33,42 +38,32 @@ class SoundRecorder: NSObject {
         }
     }
     
-    open func stop() {
+    func stop() {
         recorder?.stop()
     }
     
-    private func record() {
-        let url = createUniqueOutputURL()
-        
+    func clear() {
         do {
-            let format = AVAudioFormat(settings: [
-                AVFormatIDKey: kAudioFormatMPEG4AAC,
-                AVEncoderAudioQualityKey: AVAudioQuality.high,
-                AVSampleRateKey: 44100.0,
-                AVNumberOfChannelsKey: 2,
-                AVLinearPCMBitDepthKey: 16,
-            ])!
-            let recorder = try AVAudioRecorder(url: url, format: format)
-            
-            // workaround against Swift, AVAudioRecorder: Error 317: ca_debug_string: inPropertyData == NULL issue
-            // https://stackoverflow.com/a/57670740/598057
-            let firstSuccess = recorder.record()
-            if firstSuccess == false || recorder.isRecording == false {
-                recorder.record()
-            }
-            assert(recorder.isRecording)
-            
-            self.recorder = recorder
-            outputUrl = url
+            try FileManager.default.removeItem(at: outputUrl)
         } catch {
             print(error)
         }
     }
-
-    private func createUniqueOutputURL() -> URL {
-        let musicPath = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0]
-        let currentTime = Int(Date().timeIntervalSince1970 * 1000)
+    
+    private func record() {
+        let format = AVAudioFormat(settings: [
+            AVFormatIDKey: kAudioFormatMPEG4AAC,
+            AVEncoderAudioQualityKey: AVAudioQuality.high,
+            AVSampleRateKey: 44100.0,
+            AVNumberOfChannelsKey: 2,
+            AVLinearPCMBitDepthKey: 16,
+        ])!
         
-        return URL(fileURLWithPath: "InstantRecorder-\(currentTime).m4a", relativeTo: musicPath)
+        do {
+            self.recorder = try AVAudioRecorder(url: outputUrl, format: format)
+            recorder?.record()
+        } catch {
+            print(error)
+        }
     }
 }

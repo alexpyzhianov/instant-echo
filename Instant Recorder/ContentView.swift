@@ -12,8 +12,6 @@ struct ContentView: View {
     @State private var progress = 0.0
     @State private var isRecording = false
     
-    private var recorder = SoundRecorder()
-    
     func onStop() {
         isRecording = false
     }
@@ -23,18 +21,6 @@ struct ContentView: View {
             Slider(value: $progress, in: 0.0...1.0, step: 0.01)
             
             HStack {
-                Button(action: {
-                    self.recorder.start()
-                }) {
-                    Text("Record")
-                }
-                
-                Button(action: {
-                    self.recorder.stop()
-                }) {
-                    Text("Stop")
-                }
-                
                 Button(action: {
                     print("play")
                 }) {
