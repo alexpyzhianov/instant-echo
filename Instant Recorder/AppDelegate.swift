@@ -34,15 +34,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func onButtonClick(_ sender: AnyObject?) {
         if let button = self.statusBarItem?.button {
             if (popover?.isShown ?? false) {
-                SoundRecorder.shared.clear()
+                SoundRecorder.shared.deleteRecording()
                 popover?.performClose(sender)
             } else if (SoundRecorder.shared.isRecording) {
-                SoundRecorder.shared.stop()
+                SoundRecorder.shared.endRecording()
                 button.image = NSImage(named: "Record")
                 popover?.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
                 popover?.contentViewController?.view.window?.becomeKey()
             } else {
-                SoundRecorder.shared.start()
+                SoundRecorder.shared.startRecording()
                 button.image = NSImage(named: "Stop")
             }
         }

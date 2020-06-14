@@ -9,21 +9,21 @@
 import AVFoundation
 
 private func createOutputURL() -> URL {
-    let path = FileManager.default.urls(for: .downloadsDirectory, in: .userDomainMask)[0]
-    return URL(fileURLWithPath: "InstantRecorderLatest.m4a", relativeTo: path)
+    let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    return URL(fileURLWithPath: "InstantRecorder.m4a", relativeTo: path)
 }
 
 class SoundRecorder: ObservableObject {
     static let shared = SoundRecorder()
     
-    @Published var outputUrl = createOutputURL()
     @Published var isRecording = false
+    @Published var isPlaying = false
     
+    private var outputUrl = createOutputURL()
     private var recorder: AVAudioRecorder?
     private var player: AVAudioPlayer?
-    private init() {}
     
-    func start() {
+    func startRecording() {
         switch AVCaptureDevice.authorizationStatus(for: .audio) {
         case .authorized:
             record();
@@ -43,12 +43,18 @@ class SoundRecorder: ObservableObject {
         }
     }
     
-    func stop() {
+    func endRecording() {
         recorder?.stop()
         isRecording = false
+        
+        do {
+            player = try AVAudioPlayer(contentsOf: outputUrl)
+        } catch {
+            print(error)
+        }
     }
     
-    func clear() {
+    func deleteRecording() {
         do {
             try FileManager.default.removeItem(at: outputUrl)
         } catch {
@@ -57,16 +63,26 @@ class SoundRecorder: ObservableObject {
     }
     
     func play() {
-        do {
-            player = try AVAudioPlayer(contentsOf: outputUrl)
-            player?.play()
-        } catch {
-            print(error)
-        }
+        player?.play()
+        isPlaying = true
     }
     
     func pause() {
         player?.pause()
+        isPlaying = false
+    }
+    
+    func getPlaybackProgress() -> Double {
+        if let player = self.player {
+            return player.currentTime / player.duration
+        }
+        return Double(0)
+    }
+    
+    func skipToPosition(time: Double) {
+        if let player = self.player {
+            player.currentTime = player.duration * time
+        }
     }
     
     private func record() {
